@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Productivity Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <h1>Smart Productivity Manager</h1>
+        <button id="themeBtn" type="button">🌙 Dark Mode</button>
+    </header>
+
+    <main class="container">
+
+        <!-- Authentication -->
+        <section id="authSection" class="panel auth-panel">
+            <h2 id="authTitle">Create Account</h2>
+            <p id="authMessage">Sign up to manage your tasks.</p>
+
+            <form id="authForm">
+                <label for="email">Email</label>
+                <input id="email" type="email" required placeholder="Enter your email">
+
+                <label for="password">Password</label>
+                <input id="password" type="password" required minlength="6"
+                       placeholder="At least 6 characters">
+
+                <button id="authSubmit" type="submit">Sign Up</button>
+            </form>
+
+            <p id="authError" class="message"></p>
+
+            <p class="switch-text">
+                <span id="switchLabel">Already have an account?</span>
+                <button id="switchAuth" class="text-button" type="button">Login</button>
+            </p>
+        </section>
+
+        <!-- Dashboard -->
+        <section id="dashboard" hidden>
+
+            <div class="welcome-row">
+                <div>
+                    <h2>My Dashboard</h2>
+                    <p id="userEmail"></p>
+                </div>
+                <button id="logoutBtn" class="danger-btn" type="button">
+                    Logout
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total Tasks</h3>
+                    <p id="totalCount">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p id="pendingCount">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p id="completedCount">0</p>
+                </div>
+            </div>
+
+            <!-- Progress -->
+            <section class="panel">
+                <h3>My Progress</h3>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <p id="progressText">0% completed</p>
+            </section>
+
+            <!-- Add Task -->
+            <section class="panel">
+                <h2 id="taskFormTitle">Add New Task</h2>
+
+                <form id="taskForm">
+                    <label for="taskTitle">Task Name</label>
+                    <input id="taskTitle" type="text" required
+                           placeholder="Example: Practice Java">
+
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription"
+                              placeholder="Enter task details"></textarea>
+
+                    <div class="form-grid">
+                        <div>
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option>Study</option>
+                                <option>Personal</option>
+                                <option>Work</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="priority">Priority</label>
+                            <select id="priority">
+                                <option>High</option>
+                                <option selected>Medium</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label for="dueDate">Due Date</label>
+                    <input id="dueDate" type="date">
+
+                    <button id="saveTaskBtn" type="submit">Add Task</button>
+                    <button id="cancelEditBtn" class="secondary-btn"
+                            type="button" hidden>Cancel Edit</button>
+                </form>
+
+                <p id="taskMessage" class="message"></p>
+            </section>
+
+            <!-- Search and filters -->
+            <section class="panel">
+                <h2>My Tasks</h2>
+
+                <input id="searchInput" type="search"
+                       placeholder="Search tasks...">
+
+                <div class="filter-row">
+                    <button class="filter-btn active" data-filter="All"
+                            type="button">All</button>
+                    <button class="filter-btn" data-filter="Pending"
+                            type="button">Pending</button>
+                    <button class="filter-btn" data-filter="Completed"
+                            type="button">Completed</button>
+                </div>
+
+                <div id="taskList" class="task-list"></div>
+                <p id="emptyMessage">No tasks found. Add your first task!</p>
+            </section>
+
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
